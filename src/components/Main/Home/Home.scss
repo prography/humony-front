@@ -1,0 +1,48 @@
+@import 'utils';
+
+#home {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../assets/images/bg2.jpg') center;
+    background-size: cover;
+
+    .uploadBox {
+        width: 45%;
+        height: 500px;
+        border-radius: 10px;
+        background: rgba(255,255,255, .7);
+        box-shadow: $box-shadow-5;
+        padding: 30px;
+        float: left;
+
+        h2 {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #aaa;
+            margin-bottom: 30px;
+        }
+    }
+
+    .titleInfo {
+        width: 55%;
+        padding-top: 60px;
+        padding-left: 60px;
+        float: left;
+        h3 {
+            color: #fff;
+            font-size: 3.3rem;
+            text-shadow: 3px 2px 5px rgba(0, 0, 0, .1);
+            padding-bottom: 30px;
+        }
+        .startBtn {
+            border: none;
+            background: #fff;
+            border-radius: 30px;
+            padding: 10px 50px;
+            font-size: .9rem;
+            font-weight: bold;
+            color: #333;
+
+            span {
+                color: #e74c3c;
+            }
+        }
+    }
+}
