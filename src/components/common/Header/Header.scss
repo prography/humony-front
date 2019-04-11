@@ -1,1 +1,51 @@
-header { background: #000; }
+@import 'utils';
+
+header {
+    width: 100%;
+    position:absolute;
+    z-index: 999;
+
+    .header-container { padding: 0 70px; }
+
+    nav {
+        position: relative;
+        height: $header-height;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+
+        .logo {
+            float:left;
+            width: 70px;
+            height: 100%;
+            line-height: $header-height;
+            
+            h1 a {
+                color: $main-color;
+            }
+        }
+
+        .gnb_list {
+            display: flex;
+            flex-direction: row;
+            width: auto;
+            height: 100%;
+            position: absolute;
+            left: calc(50% - 130px);
+
+            li {
+                height: 100%;
+                a {
+                    display: inline-block;
+                    line-height: $header-height;
+                    padding: 0 20px;
+                    color: #fff;
+                    font-size: 14px;
+                    transition: color .2s;
+
+                    &:hover {
+                        color: $main-color;
+                    }
+                }
+            }
+        }
+    }
+}
