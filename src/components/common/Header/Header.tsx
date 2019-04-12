@@ -1,9 +1,14 @@
 import React from 'react';
 import './Header.scss';
+import styled from 'styled-components';
 
-const Header: React.FC = () => {
+interface Props {
+    scrollTop: number
+}
+
+const Header: React.FC<Props> = ({ scrollTop }) => {
     return (
-        <header>
+        <header className={ scrollTop >= 100 ? 'header-fix' : ''}>
             <nav>
                 <div className="header-container">
                     <div className="logo">
