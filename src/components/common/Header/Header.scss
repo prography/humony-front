@@ -2,10 +2,21 @@
 
 header {
     width: 100%;
-    position:absolute;
+    position:fixed;
     z-index: 999;
 
     .header-container { padding: 0 70px; }
+
+    &.header-fix {
+        background: #fff;
+        nav {
+            box-shadow: $box-shadow-1;
+            .gnb_list li a {
+                color: #333; 
+            }
+        }
+        
+    }
 
     nav {
         position: relative;
