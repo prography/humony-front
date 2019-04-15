@@ -15,7 +15,7 @@ class PageTemplate extends Component<Props, State> {
     state = {
         scrollTop: 0
     };
-    componentDidMount () {
+    componentDidMount = () => {
         window.addEventListener('scroll', this.WindowScroll);
     }
 
@@ -34,7 +34,6 @@ class PageTemplate extends Component<Props, State> {
     }
 
     render () {
-        console.log('123');
         return (
             <div className="page-template">
              <Header scrollTop ={this.state.scrollTop} />
