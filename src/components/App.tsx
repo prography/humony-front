@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import '../styles/reset.scss';
-import PageTemplate from './common/PageTemplate';
-import Main from './Main';
+
+const MainPage = lazy(() => import('../pages/MainPage'));
+const Intro = lazy(() => import('../pages/IntroPage'));
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <PageTemplate>
-          <Main />
-        </PageTemplate>
+        <BrowserRouter>
+          <Suspense fallback={<div>Loading...</div>}>
+              <Switch>
+                  <Route exact path="/" component={MainPage} />
+                  <Route exact path="/intro" component={Intro} />
+              </Switch>
+          </Suspense>
+        </BrowserRouter>
       </div>
     );
   }

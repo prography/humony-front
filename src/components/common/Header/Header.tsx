@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
-import styled from 'styled-components';
 
 interface Props {
     scrollTop: number
@@ -33,9 +33,9 @@ class Header extends Component<Props, State> {
                             </h1>
                         </div>
                         <ul className={`gnb_list ${this.state.mobileOpen ? 'is_open' : ''}`}>
-                            <li><a href="#">홈</a></li>
-                            <li><a href="#">서비스 소개</a></li>
-                            <li><a href="#">픽시 플러스</a></li>
+                            <li><Link to="/">홈</Link></li>
+                            <li><Link to="/intro">서비스 소개</Link></li>
+                            <li><Link to="#">픽시 플러스</Link></li>
                         </ul>
                         <div className={`mobile-menu ${this.state.mobileOpen ? 'is_open' : ''}`} onClick={this.handleClick}>
                             <div className="bar"></div>
