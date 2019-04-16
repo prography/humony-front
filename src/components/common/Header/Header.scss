@@ -5,7 +5,7 @@ header {
     position:fixed;
     z-index: 999;
 
-    .header-container { padding: 0 20px; }
+    .header-container { padding: 0 20px; height: 100%; }
 
     &.header-fix {
         //background: #fff;
@@ -36,10 +36,10 @@ header {
         .logo {
             float:left;
             width: 70px;
-            height: 100%;
-            line-height: $header-height;
-            
+            height: $header-height;
             h1 a {
+                font-size: 18px;
+                line-height: $header-height;
                 color: $main-color;
             }
         }
@@ -102,7 +102,7 @@ header {
 
             &:hover {
                 .bar {
-                    background: rgba(#e74c3c, .6);
+                    background: rgba($main-color, .6);
                 }
                 
             }
