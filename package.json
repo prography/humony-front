@@ -59,6 +59,7 @@
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "styled-components": "^4.2.0",
+    "sweetalert": "^2.1.2",
     "terser-webpack-plugin": "1.2.2",
     "typescript": "^3.4.3",
     "url-loader": "1.1.2",
