@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Home.scss';
+import axios from 'axios';
+import swal from 'sweetalert';
 //import console = require('console');
 
 
@@ -8,23 +10,44 @@ interface Props {
 };
 
 interface State {
-    selectedFile: string
+    formData: any
 };
 
 class Home extends Component<Props, State> {
     state = {
-        selectedFile: ''
+        formData: ''
     };
 
-    handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file: any = e.target.files;
-   
-        if (file.length) {
+    handleChange = (e: any) => {
+        const files: any = Array.from(e.target.files);
+        console.log(files);
+
+        const formData = new FormData();
+
+        files.forEach((file: any, i: any) => {
+            formData.append(i, file); 
+        });
+
+        if (files.length) {
             this.setState({
-                selectedFile: file[0].name
+                formData: formData
             });
         }
         
+    }
+
+    handleUpload = async () => {
+        try {
+            await axios.post('localhost:8000/inpic', this.state.formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            swal("업로드 성공", "이미지 업로드에 성공했습니다.", "success");
+        } catch {
+            swal('이미지 업로드 실패');
+        }
     }
 
     render () {
@@ -40,8 +63,8 @@ class Home extends Component<Props, State> {
                                 </label>
                                 <input type="file" onChange={this.handleChange} id="ex_file" />
                             </div>
-                            <p className="fileName">{this.state.selectedFile}</p>
                         </form>
+                        <button type="button" onClick={this.handleUpload}>전송</button>
                     </div>
                     <div className="titleInfo">
                         <h3><span className="title-concept">사진을 쉽고 빠르게 자르자!</span> <br/>윤대영쌤의 딥러닝과 함께하는<br/>재미있는 누끼따기</h3>
