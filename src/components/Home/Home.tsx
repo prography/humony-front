@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import './Home.scss';
-import axios from 'axios';
+import * as api from '../../lib/api';
 import swal from 'sweetalert';
 //import console = require('console');
 
@@ -20,7 +21,6 @@ class Home extends Component<Props, State> {
 
     handleChange = (e: any) => {
         const files: any = Array.from(e.target.files);
-        console.log(files);
 
         const formData = new FormData();
 
@@ -37,20 +37,29 @@ class Home extends Component<Props, State> {
     }
 
     handleUpload = async () => {
-        try {
-            await axios.post('localhost:8000/inpic', this.state.formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-            });
+        if (!this.state.formData) {
+            swal('파일을 선택해 주세요');
+            return false;
+        }
 
-            swal("업로드 성공", "이미지 업로드에 성공했습니다.", "success");
+        try {
+            await api.sendImage(this.state.formData);
+
+            swal('업로드 성공', '이미지 업로드에 성공했습니다.', 'success');
         } catch {
-            swal('이미지 업로드 실패');
+            swal('업로드 실패','이미지 업로드에 실패했습니다.', 'error');
         }
     }
 
     render () {
+        const SendBtn = styled.button`
+            margin-top: 10px;
+            padding: 10px;
+            background: #3498db;
+            color: #fff;
+            border-radius: 3px;
+        `;
+
         return (
             <section id="home">
                 <div className="home-wrap">
@@ -64,7 +73,7 @@ class Home extends Component<Props, State> {
                                 <input type="file" onChange={this.handleChange} id="ex_file" />
                             </div>
                         </form>
-                        <button type="button" onClick={this.handleUpload}>전송</button>
+                        <SendBtn type="button" onClick={this.handleUpload}>전송</SendBtn>
                     </div>
                     <div className="titleInfo">
                         <h3><span className="title-concept">사진을 쉽고 빠르게 자르자!</span> <br/>윤대영쌤의 딥러닝과 함께하는<br/>재미있는 누끼따기</h3>
