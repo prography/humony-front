@@ -25,7 +25,7 @@ class Home extends Component<Props, State> {
         const formData = new FormData();
 
         files.forEach((file: any, i: any) => {
-            formData.append(i, file); 
+            formData.append('before', file); 
         });
 
         if (files.length) {
