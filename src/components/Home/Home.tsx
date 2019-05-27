@@ -11,29 +11,49 @@ interface Props {
 };
 
 interface State {
+    fileName: string
     formData: any
 };
 
 class Home extends Component<Props, State> {
     state = {
+        fileName: '',
         formData: ''
     };
 
     handleChange = (e: any) => {
-        const files: any = Array.from(e.target.files);
+        try  {
+            const files: any = Array.from(e.target.files);
 
-        const formData = new FormData();
+            // 파일 선택 취소하면 return false
+            if (!files || !files.length) {
+                return false;
+            } 
 
-        files.forEach((file: any, i: any) => {
-            formData.append('before', file); 
-        });
+            const formData = new FormData();
+            const fileType = files[0].type.split('/')[0];
 
-        if (files.length) {
-            this.setState({
-                formData: formData
+            if (fileType !== 'image') {
+                throw Error('FILE_TYPE_ERROR');
+            }
+
+            files.forEach((file: any, i: any) => {
+                formData.append('before', file); 
             });
+
+            if (files.length) {
+                this.setState({
+                    fileName: files[0].name,
+                    formData: formData
+                });
+            }
+        } catch (error) {
+            switch (error.message) {
+                case 'FILE_TYPE_ERROR':
+                    swal('업로드 실패','이미지만 업로드 할 수 있습니다.', 'error');
+                    break;
+            }
         }
-        
     }
 
     handleUpload = async () => {
@@ -75,9 +95,11 @@ class Home extends Component<Props, State> {
                                         <figure>
                                             <UploadIcon className="upload-icon" />
                                         </figure>
-                                        <span>이미지 파일을 선택해주세요 <br/><span className="ext">JPG, JPGEG, PNG</span></span>
+                                        {
+                                            this.state.fileName ? <span>{this.state.fileName}</span> : <span>이미지 파일을 선택해주세요 <br/><span className="ext">JPG, JPGEG, PNG</span></span>
+                                        }
                                     </label>
-                                    <input type="file" id="imageInput" onChange={this.handleChange} />
+                                    <input type="file" id="imageInput" onChange={this.handleChange} accept="image/png, image/jpeg" />
                                     <button type="button" onClick={this.handleUpload}>전송하기</button>
                                 </div>  
                             </div>
