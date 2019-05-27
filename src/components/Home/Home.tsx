@@ -20,7 +20,7 @@ class Home extends Component<Props, State> {
     state = {
         fileName: '',
         formData: '',
-        sendYn: false,
+        sendYn: true,
     };
 
     handleChange = (e: any) => {
@@ -90,7 +90,26 @@ class Home extends Component<Props, State> {
                                     this.state.sendYn 
                                         ? 
                                         <div className="loading">
-                                            로딩중입니다.
+                                            <div className="imgPreview">
+                                                
+                                            </div>
+                                            <div className="colorlist">
+                                                <ul>
+                                                    <li className="colorList">
+                                                        <input type="checkbox"/>
+                                                    </li>
+                                                    <li className="colorList">
+                                                        <input type="checkbox"/>
+                                                    </li>
+                                                    <li className="colorList">
+                                                        <input type="checkbox"/>
+                                                    </li>
+                                                    <li className="colorList">
+                                                        <input type="checkbox"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p>check what you want!</p>
                                         </div>
                                         : 
                                         <div className="ub-bg">
