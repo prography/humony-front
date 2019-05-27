@@ -5,7 +5,6 @@ import * as api from '../../lib/api';
 import swal from 'sweetalert';
 import { IoIosCloudUpload as UploadIcon } from 'react-icons/io';
 
-
 interface Props {
     
 };
@@ -20,7 +19,7 @@ class Home extends Component<Props, State> {
     state = {
         fileName: '',
         formData: '',
-        sendYn: false,
+        sendYn: true,
     };
 
     handleChange = (e: any) => {
@@ -89,8 +88,30 @@ class Home extends Component<Props, State> {
                                 {
                                     this.state.sendYn 
                                         ? 
-                                        <div className="loading">
-                                            로딩중입니다.
+                                        <div className="segList">
+                                            <ul>
+                                                <li>
+                                                    <div></div>
+                                                </li>
+                                                <li>
+                                                    <div></div>
+                                                </li>
+                                                <li>
+                                                    <div></div>
+                                                </li>
+                                                <li>
+                                                    <div></div>
+                                                </li>
+                                                <li>
+                                                    <div></div>
+                                                </li>
+                                                <li>
+                                                    <div></div>
+                                                </li>
+                                            </ul>
+                                            <div className="buttonForm">
+                                                <button>이미지 선택 완료</button>
+                                            </div>
                                         </div>
                                         : 
                                         <div className="ub-bg">
