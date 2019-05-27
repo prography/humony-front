@@ -13,12 +13,14 @@ interface Props {
 interface State {
     fileName: string
     formData: any
+    sendYn: boolean
 };
 
 class Home extends Component<Props, State> {
     state = {
         fileName: '',
-        formData: ''
+        formData: '',
+        sendYn: false,
     };
 
     handleChange = (e: any) => {
@@ -63,8 +65,10 @@ class Home extends Component<Props, State> {
         }
 
         try {
-            await api.sendImage(this.state.formData);
-
+            //await api.sendImage(this.state.formData);
+            this.setState({
+                sendYn: true
+            });
             swal('업로드 성공', '이미지 업로드에 성공했습니다.', 'success');
         } catch {
             swal('업로드 실패','이미지 업로드에 실패했습니다.', 'error');
@@ -72,14 +76,6 @@ class Home extends Component<Props, State> {
     }
 
     render () {
-        const SendBtn = styled.button`
-            margin-top: 10px;
-            padding: 10px;
-            background: #3498db;
-            color: #fff;
-            border-radius: 3px;
-        `;
-
         return (
             <div id="home">
                 <section className="main-banner">
@@ -90,18 +86,26 @@ class Home extends Component<Props, State> {
                                 <p>지금 바로 시작해보세요!</p>
                             </div>
                             <div className="upload-box">
-                                <div className="ub-bg">
-                                    <label htmlFor="imageInput">
-                                        <figure>
-                                            <UploadIcon className="upload-icon" />
-                                        </figure>
-                                        {
-                                            this.state.fileName ? <span>{this.state.fileName}</span> : <span>이미지 파일을 선택해주세요 <br/><span className="ext">JPG, JPGEG, PNG</span></span>
-                                        }
-                                    </label>
-                                    <input type="file" id="imageInput" onChange={this.handleChange} accept="image/png, image/jpeg" />
-                                    <button type="button" onClick={this.handleUpload}>전송하기</button>
-                                </div>  
+                                {
+                                    this.state.sendYn 
+                                        ? 
+                                        <div className="loading">
+                                            로딩중입니다.
+                                        </div>
+                                        : 
+                                        <div className="ub-bg">
+                                            <label htmlFor="imageInput">
+                                                <figure>
+                                                    <UploadIcon className="upload-icon" />
+                                                </figure>
+                                                {
+                                                    this.state.fileName ? <span>{this.state.fileName}</span> : <span>이미지 파일을 선택해주세요 <br/><span className="ext">JPG, JPGEG, PNG</span></span>
+                                                }
+                                            </label>
+                                            <input type="file" id="imageInput" onChange={this.handleChange} accept="image/png, image/jpeg" />
+                                            <button type="button" onClick={this.handleUpload}>전송하기</button>
+                                        </div>  
+                                }
                             </div>
                         </div>
                     </div>
