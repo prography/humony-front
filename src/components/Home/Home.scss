@@ -43,6 +43,41 @@
                 border-radius: 8px;
                 box-shadow: $box-shadow-5;
 
+                .loading {
+                    .imgPreview{
+                        border:2px solid purple;
+                        width:50%;
+                        padding:10px;
+                        margin: 50px auto 20px; 
+                    }
+
+                    .colorlist{
+                        ul { 
+                            &:after {
+                                content: '';
+                                display: block;
+                                clear: both;
+                            }
+                            li {
+                                margin: 0 20px;
+                                float: left;
+                                text-align: left;
+                                width: 10%;
+                                position:relative;
+                                left: 25%;
+                            }
+                        }
+                    }
+
+                    p{
+                        padding-top:35px;
+                        color:purple;
+                        font-size:30px;
+                        text-align:center;
+                        font-weight: bold;
+                    }
+                }
+
                 .ub-bg {
                     padding: 100px 0;
                     width: 100%;
