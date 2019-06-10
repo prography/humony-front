@@ -45,34 +45,54 @@
 
                 .loading {
                     .imgPreview{
-                        border:2px solid purple;
-                        width:50%;
-                        padding:10px;
+                        border: 1px solid #efefef;
+                        width: 50%;
                         margin: 50px auto 20px; 
+
+                        img {
+                            width: 100%;
+                        }
                     }
 
                     .colorlist{
                         ul { 
-                            &:after {
-                                content: '';
-                                display: block;
-                                clear: both;
-                            }
+                            width: 50%;
+                            margin: 0 auto;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+
                             li {
-                                margin: 0 20px;
-                                float: left;
-                                text-align: left;
-                                width: 10%;
-                                position:relative;
-                                left: 25%;
+                                label {
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    .color-badge {
+                                        display: inline-block;
+                                        padding: 5px 10px;
+                                        border-radius: 5px;
+                                        background: $m-color;
+                                        margin-right: 3px;
+                                        font-size: 10px;
+                                        color: #fff;
+                                        cursor: pointer;
+
+                                        &:hover {
+                                            background: darken($m-color, 10);
+                                        }
+                                    }
+                                }
+                                padding-right: 10px;
                             }
                         }
                     }
 
-                    p{
-                        padding-top:35px;
-                        color:purple;
-                        font-size:30px;
+                    p {
+                        padding-top: 50px;
+                        color: $m-color;
+                        font-size: 24px;
                         text-align:center;
                         font-weight: bold;
                     }
