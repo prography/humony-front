@@ -40,7 +40,6 @@ class PageTemplate extends Component<Props, State> {
              <main>
                  {this.props.children}
              </main>
-             <Footer />
          </div>
         );
     }
