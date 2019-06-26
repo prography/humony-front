@@ -1,184 +1,211 @@
 @import 'utils';
 
 #home {
-    height: calc(100vh - #{$footer-height});
-    background: #efefef;
+		background: #efefef;
+		
+		button.m_btn {
+			width: 200px;
+			height: 50px;
+			border-radius: 5px;
+			background: $m-color;
+			color: #fff;
+			font-size: .6rem;
+			display: block;
+			transition: background .2s;
+
+			&:hover {
+				background: darken($m-color, 20);
+			}
+		}
     
     .main-banner {
         position: relative;
         padding-top: $header-height;
-        height: 50%;
+        height: 450px;
         background: linear-gradient(rgba($main-color, 0.7), rgba($main-color, 0.65)), url('../../assets/images/bg4.png') center no-repeat;
         background-size: cover;
-        box-shadow: $box-shadow-1;
+				box-shadow: $box-shadow-1;
 
-        .main-content {
-            position: absolute;
-            top: 180px;
-            left: 0;
-            width: 100%;
-            .main-title-info {
-                * {
-                    font-weight: 300;
-                }
+				.main-title-info {
+					padding-top: 100px;
 
-                h2 {
-                    font-size: 1.2rem;
-                    color: #fff;
-                }
+					* {
+							font-weight: 300;
+					}
 
-                p {
-                    padding-top: 5px;
-                    padding-bottom: 30px;
-                    font-size: .75rem;
-                    color: #fff;
-                }
-            }
-            
-            .upload-box {
-                width: 100%;
-                height: 600px;
-                padding: 20px;
-                background: #fff;
-                border-radius: 8px;
-                box-shadow: $box-shadow-5;
+					h2 {
+							font-size: 1.2rem;
+							color: #fff;
+					}
 
-                .loading {
-                    .imgPreview{
-                        border: 1px solid #efefef;
-                        width: 50%;
-                        margin: 50px auto 20px; 
+					p {
+							padding-top: 5px;
+							padding-bottom: 30px;
+							font-size: .75rem;
+							color: #fff;
+					}
+			}   
+		}
+		
+		.main-content {
+			
+			width: 100%;
+			
+			.upload-box {
+					width: 100%;
+					padding: 20px;
+					background: #fff;
+					border-radius: 8px;
+					box-shadow: $box-shadow-5;
+					position: relative;
+					overflow: hidden;
+					bottom: 130px;
 
-                        img {
-                            width: 100%;
-                        }
-                    }
+					.loadingCover {
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						left: 0;
+						background-color: rgba(#000, .8);
+						
+						p {
+							padding-top: 200px;
+							text-align: center;
+							color: #fff;
+						}
+					}
 
-                    .colorlist{
-                        ul { 
-                            width: 50%;
-                            margin: 0 auto;
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: space-between;
+					.loading {
+							.imgPreview{
+									border: 1px solid #efefef;
+									width: 50%;
+									margin: 50px auto 20px; 
 
-                            li {
-                                label {
-                                    display: flex;
-                                    flex-direction: row;
-                                    align-items: center;
-                                    justify-content: center;
+									img {
+											width: 100%;
+									}
+							}
 
-                                    .color-badge {
-                                        display: inline-block;
-                                        padding: 5px 10px;
-                                        border-radius: 5px;
-                                        background: $m-color;
-                                        margin-right: 3px;
-                                        font-size: 10px;
-                                        color: #fff;
-                                        cursor: pointer;
+							.colorlist{
+									ul { 
+											width: 50%;
+											margin: 0 auto;
+											display: flex;
+											flex-direction: row;
+											justify-content: space-between;
+											flex-wrap: wrap;
 
-                                        &:hover {
-                                            background: darken($m-color, 10);
-                                        }
-                                    }
-                                }
-                                padding-right: 10px;
-                            }
-                        }
-                    }
+											li {
+												width: 25%;
+												margin-bottom: 5px;
+													label {
+															display: flex;
+															flex-direction: row;
+															align-items: center;
+															justify-content: center;
 
-                    p {
-                        padding-top: 50px;
-                        color: $m-color;
-                        font-size: 24px;
-                        text-align:center;
-                        font-weight: bold;
-                    }
-                }
+															.color-badge {
+																	display: inline-block;
+																	padding: 5px 10px;
+																	border-radius: 5px;
+																	background: $m-color;
+																	margin-right: 3px;
+																	font-size: 10px;
+																	color: #fff;
+																	cursor: pointer;
 
-                .ub-bg {
-                    padding: 100px 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba($m-color, .1);
-                    border-radius: 8px;
-                    text-align: center;
+																	&:hover {
+																			background: darken($m-color, 10);
+																	}
+															}
+													}
+													padding-right: 10px;
+											}
+									}
+							}
 
-                    label {
-                        max-width: 80%;
-                        display: inline-block;
-                        cursor: pointer;
+							p {
+									padding-top: 50px;
+									color: $m-color;
+									font-size: 24px;
+									text-align:center;
+									font-weight: bold;
+							}
+							
+							button.m_btn {
+								margin: 70px auto;;
+							}
+					}
 
-                        figure {
-                            width: 120px;
-                            height: 120px;
-                            background: $m-color;
-                            border-radius: 50%;
-                            text-align: center;
-                            padding: 20px;
-                            margin: 0 auto;
-                            display: block;
-                            transition: background .5s;
-                            
-                            .upload-icon {
-                                vertical-align: middle;
-                                font-size: 2rem;
-                                margin-top: 14px;
-                                
-                                path {
-                                    color: #fff;
-                                }
-                            }
-                        }
+					.ub-bg {
+							padding: 100px 0;
+							width: 100%;
+							height: 560px;
+							background: rgba($m-color, .1);
+							border-radius: 8px;
+							text-align: center;
 
-                        span {
-                            display: inline-block;
-                            margin: 15px 0;
-                            font-size: .7rem;
-                            font-weight: 700;
-                            color: $m-color;
-                            transition: color .5s;
+							label {
+									max-width: 80%;
+									display: inline-block;
+									cursor: pointer;
 
-                            .ext {
-                                margin: 0;
-                                font-size: .55rem;
-                            }
-                        }
+									figure {
+											width: 120px;
+											height: 120px;
+											background: $m-color;
+											border-radius: 50%;
+											text-align: center;
+											padding: 20px;
+											margin: 0 auto;
+											display: block;
+											transition: background .5s;
+											
+											.upload-icon {
+													vertical-align: middle;
+													font-size: 2rem;
+													margin-top: 14px;
+													
+													path {
+															color: #fff;
+													}
+											}
+									}
 
-                        &:hover {
-                            figure {
-                                background: darken($m-color, 20);
-                            }
-                            span {
-                                color: darken($m-color, 20);
-                            }
-                        }
-                        
-                    }
+									span {
+											display: inline-block;
+											margin: 15px 0;
+											font-size: .7rem;
+											font-weight: 700;
+											color: $m-color;
+											transition: color .5s;
 
-                    button {
-                        width: 200px;
-                        height: 50px;
-                        border-radius: 5px;
-                        background: $m-color;
-                        color: #fff;
-                        font-size: .6rem;
-                        margin: 80px auto 0;
-                        display: block;
-                        transition: background .2s;
+											.ext {
+													margin: 0;
+													font-size: .55rem;
+											}
+									}
 
-                        &:hover {
-                            background: darken($m-color, 20);
-                        }
-                    }
+									&:hover {
+											figure {
+													background: darken($m-color, 20);
+											}
+											span {
+													color: darken($m-color, 20);
+											}
+									}
+									
+							}
+							
+							button.m_btn {
+								margin: 80px auto 0;
+							}
 
-                    input[type=file] { 
-                        display: none; 
-                    }
-                }
-            }
-        }   
-    }   
+							input[type=file] { 
+									display: none; 
+							}
+					}
+			}
+	}
 }
